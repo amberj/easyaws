@@ -1,12 +1,12 @@
 from setuptools import setup
 
 setup(name='easyaws',
-      version='0.0.1',
-      description='Easy to use AWS command line tools for developers',
+      version='0.0.2',
+      description='Easy to use AWS commands for developers (currently supports EC2; tools for S3 coming soon)',
       packages=['easyaws'],
       install_requires = ['awscli>=1.7.30'],
       url='http://github.com/amberj/easyaws',
-      scripts = ["easyaws/ec2ssh"],
+      scripts = ["easyaws/ec2ssh", "easyaws/ec2list", "easyaws/easyaws"],
       author='Amber Jain',
       author_email='i.amber.jain@gmail.com',
       license='ISC',
