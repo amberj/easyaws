@@ -28,7 +28,7 @@ USING EASYAWS:
     2. 'ec2ssh':  SSH into EC2 instances using instance name/tag
 
 COMING SOON:
-  We are working on following scripts:
+  I am working on following scripts:
     1. 'ec2scp': Script to easily 'scp' files to/from EC2 instances.
     2. 's3cp':   Script to cp files to/from S3 buckets (i.e. 'cp' for S3)
 EOF
