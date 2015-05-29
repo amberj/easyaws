@@ -6,10 +6,10 @@ To setup, run 'aws configure' to enter your AWS credentials and configuration. E
 
 USING EASYAWS:
 Once you have configured your AWS credentials, you can use following scripts that are installed with 'easyaws' package:
-  1. 'ec2list': List your EC2 instances
-  2. 'ec2ssh':  SSH into EC2 instances using instance name/tag
+    1. 'ec2list': List your EC2 instances
+    2. 'ec2ssh':  SSH into EC2 instances using instance name/tag
 
 COMING SOON:
-We are working on following scripts:
-  1. 'ec2scp': Script to easily 'scp' files to/from EC2 instances.
-  2. 's3cp':   Script to cp files to/from S3 buckets (i.e. 'cp' for S3)
+I am working on following scripts:
+    1. 'ec2scp': Script to easily 'scp' files to/from EC2 instances.
+    2. 's3cp':   Script to cp files to/from S3 buckets (i.e. 'cp' for S3)
