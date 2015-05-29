@@ -33,11 +33,11 @@ while getopts "ah" opt; do
   esac
 done
 
-echo "Output format: (InstanceState, InstanceName, AdminKeypair)"
+echo "Output format: (InstanceName, InstanceState, InstanceIP, InstancePublicDNS, AdminKeypair)"
 if [[ -z "$LIST_ALL" ]] ; then
-  aws ec2 describe-instances --query 'Reservations[].Instances[].[State.Name,Tags[?Key==`Name`] | [0].Value,KeyName]' --output table --filters Name=instance-state-name,Values=running
+  aws ec2 describe-instances --query 'Reservations[].Instances[].[Tags[?Key==`Name`] | [0].Value,State.Name,PublicIpAddress,PublicDnsName,KeyName]' --output table --filters Name=instance-state-name,Values=running
 else
-  aws ec2 describe-instances --query 'Reservations[].Instances[].[State.Name,Tags[?Key==`Name`] | [0].Value,KeyName]' --output table
+  aws ec2 describe-instances --query 'Reservations[].Instances[].[Tags[?Key==`Name`] | [0].Value,State.Name,PublicIpAddress,PublicDnsName,KeyName]' --output table
 fi
 
 exit 0
