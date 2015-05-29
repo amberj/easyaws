@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='easyaws',
-      version='0.0.2',
+      version='0.0.3',
       description='Easy to use AWS commands for developers (currently supports EC2; tools for S3 coming soon)',
       packages=['easyaws'],
       install_requires = ['awscli>=1.7.30'],
