@@ -58,17 +58,22 @@ done
 INSTANCE_STATE=`aws ec2 describe-instances --filters "Name=tag:Name,Values=$EC2_HOST" --query 'Reservations[].Instances[].[State.Name]'`
 
 if [[ $INSTANCE_STATE == "stopped" ]] ; then
-  echo "'$EC2_HOST' is NOT running. If you want to connect, ask your superadmin to boot this EC2 instance first."
+  echo "EC2 instance '$EC2_HOST' is NOT running. If you want to connect, ask your superadmin to boot this EC2 instance first."
   exit 2
 elif [[ $INSTANCE_STATE == "running" ]]; then
-  echo "Trying to SSH into '$EC2_HOST'"
+  echo "EC2 instance '$EC2_HOST' is running; Trying to SSH now..."
 else
-  echo "'$EC2_HOST' does NOT exists. Please check output of 'ec2list' to see running EC2 instances."
+  echo "EC2 instance '$EC2_HOST' does NOT exists. Please check output of 'ec2list' to see running EC2 instances."
   exit 3
   #MESSAGE="Detected public DNS name of '$OPTARG' as '$INSTANCE_PUBLIC_DNS_NAME'" ; green_echo
 fi
 
 INSTANCE_PUBLIC_DNS_NAME=`aws ec2 describe-instances --filters "Name=tag:Name,Values=$EC2_HOST" --query 'Reservations[].Instances[].[PublicDnsName]'`
 CMD="$CMD $INSTANCE_PUBLIC_DNS_NAME"
+
+if [[ -z "$SSH_USER" ]] ; then
+  echo "You didnt specify login username. Trying to SSH with amazon's default username 'ubuntu'..."
+  CMD="$CMD -l ubuntu"
+fi
 
 $CMD
